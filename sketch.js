@@ -5,6 +5,7 @@ const Constraint = Matter.Constraint;
 
 var engine, world;
 var backgroundImg;
+var hour;
 
 var bg="sunrise1.png";
 
@@ -29,7 +30,18 @@ function draw(){
     Engine.update(engine);
 
     // write code to display time in correct format here
-    
+    textSize(30);
+    fill("black");
+     
+    if(hour>=12){
+        text("Time : "+ hour%12+" PM",50,100);
+    }
+    else if(hour===0){
+        text("Time : 12 AM",50,100);
+    }
+    else{
+        text("Time : "+hour+" AM",50,100);
+    }
 
 
 }
@@ -46,7 +58,7 @@ async function getBackgroundImg(){
 
     // write code slice the datetime
     var datetime= responseJson.datetime
-    var hour=datetime.slice(11,13)
+    hour=datetime.slice(11,13)
 
     console.log(hour)
 
